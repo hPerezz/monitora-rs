@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados do Sensor</title>
+</head>
+
+<body>
+    <h1>Dados do Sensor</h1>
+    <ul id="dadosList">
+        <!-- Os dados serão atualizados aqui -->
+    </ul>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        socket.on('dados', function (data) {
+            const listItem = document.getElementById(data.topic);
+            if (listItem) {
+                // Se o elemento da lista existir, atualize o valor da leitura
+                listItem.textContent = `${data.message}`;
+            } else {
+                // Se o elemento da lista não existir, crie um novo elemento e adicione-o à lista
+                const newListItem = document.createElement('li');
+                newListItem.id = data.topic;
+                newListItem.textContent = `${data.message}`;
+                document.getElementById('dadosList').appendChild(newListItem);
+            }
+        });
+    </script>
+</body>
+
+</html>

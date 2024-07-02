@@ -37,9 +37,10 @@
     <link rel="stylesheet" type="text/css" href="css/main.css" />
 
     <!--===============================================================================================-->
-    <script>
+    <script type="module">
+      import config from '/config.js';
       const script = document.createElement("script");
-      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyD-Cq1lZlOXctNLrsnHh791IYRF9qJjzCA&callback=console.debug&libraries=maps,marker&v=beta`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${config.googleMapsApiKey}&callback=console.debug&libraries=maps,marker&v=beta`;
       script.async = true;
       document.head.appendChild(script);
     </script>

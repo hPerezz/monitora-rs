@@ -1,0 +1,75 @@
+[
+    {
+    "id": 1,
+    "nome": "Parque Esportivo da PUCRS",
+    "latitude":-30.055509118593974, 
+    "longitude": -51.17250000209176,
+    "altitude": 16
+  },
+
+  {
+    "id": 3,
+    "nome": "Aparício Ginásio da Brigada",
+    "latitude": -30.070249150514208, 
+    "longitude": -51.187163654587486,
+    "altitude": 58
+  },
+  {
+    "id": 4,
+    "nome": "Clube Lindóia",
+    "latitude": -30.002873949254276, 
+    "longitude": -51.15178434015229,
+    "altitude": 8
+  },
+  {
+    "id": 5,
+    "nome": "Centro Vida",
+    "latitude": -30.014997928696342, 
+    "longitude": -51.118493088915756,
+    "altitude": 18
+  },
+  
+  {
+    "id": 2,
+    "nome": "ESEF",
+    "latitude": -30.050798799897475, 
+    "longitude": -51.182451869425336,
+    "altitude": 18
+  },
+  {
+    "id": 6,
+    "nome": "Grêmio Nautico Bocaiuva",
+    "latitude": -30.02170361952215, 
+    "longitude": -51.19810592206787,
+    "altitude": 14
+  },
+  {
+    "id": 7,
+    "nome": "Escola Municipal Grande Oriente",
+    "latitude": -30.026481593554063, 
+    "longitude": -51.10281654334531,
+    "altitude": 44
+  },
+  {
+    "id": 8,
+    "nome": "SESC Petrópolis",
+    "latitude": -30.041123416564126,
+    "longitude": -51.14912628073204,
+    "altitude": 105
+  },
+  {
+    "id": 9,
+    "nome": "Associação Missionária SOS",
+    "latitude": -30.047003740391904, 
+    "longitude": -51.129534442273936,
+    "altitude": 61
+  },
+  {
+    "id": 10,
+    "nome": "Escola São Francisco - Rubem Berta",
+    "latitude": -30.015649805342196, 
+    "longitude": -51.09631763402241,
+    "altitude": 34
+  }
+  
+]

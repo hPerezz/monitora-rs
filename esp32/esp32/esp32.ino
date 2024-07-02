@@ -1,17 +1,18 @@
 #include <WiFi.h>
 #include <PubSubClient.h>
+#include <ArduinoJson.h>
 
-const char* ssid = "sua_rede_wifi";
-const char* password = "sua_senha_wifi";
+const char* ssid = "iPerez";
+const char* password = "12345678";
 const char* mqtt_server = "test.mosquitto.org";
-const char* mqtt_topic = "sensor/niveldeagua";
-const int mqtt_port = 1883;
+const char* mqtt_topic = "monitora-rs/dispositivo/1";
+const int mqtt_port = 1883; 
 
 WiFiClient espClient;
 PubSubClient client(espClient);
 
-float nivel_de_agua = 0; // Simulado, substitua pelo seu sensor
-float temperatura = 0; // Simulado, substitua pelo seu sensor
+float nivel_de_agua = 0;
+float temperatura = 20;
 
 void setup_wifi() {
   delay(10);
@@ -44,6 +45,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
 
 void reconnect() {
   while (!client.connected()) {
+        delay(5000);
     Serial.print("Tentando se conectar ao broker MQTT...");
     if (client.connect("ESP32Client")) {
       Serial.println("Conectado");
@@ -60,8 +62,8 @@ void reconnect() {
 void setup() {
   Serial.begin(115200);
   setup_wifi();
-  client.setServer(mqtt_server, mqtt_port);
-  client.setCallback(callback);
+  client.setServer(mqtt_server, mqtt_port);  // manda
+  client.setCallback(callback);              // escuta
 }
 
 void loop() {
@@ -70,20 +72,31 @@ void loop() {
   }
   client.loop();
 
-  // Simula a leitura do sensor
+  // muda valor do sensor cada vez que loopa
   nivel_de_agua += 0.1;
   temperatura += 1;
 
-  // Monta a mensagem JSON
+  // monta o JSON
   StaticJsonDocument<200> doc;
-  doc["nivel_de_agua"] = nivel_de_agua;
-  doc["temperatura"] = temperatura;
 
-  char buffer[512];
+  doc["temperatura"] = temperatura;
+  doc["nivel_de_agua"] = nivel_de_agua;
+
+  // encapsula
+  char buffer[256];
   serializeJson(doc, buffer);
 
-  // Envia mensagem para o broker MQTT
-  client.publish(mqtt_topic, buffer);
+  // verifica se ainda está conectado antes de publicar
+  if (client.connected()) {
 
-  delay(6000); // Aguarda 6 segundos antes de enviar o próximo dado
+    if (client.publish(mqtt_topic, buffer, false)) {  // Set QoS to 0
+      Serial.print("Publicado: ");
+      Serial.println(buffer);
+    } else {
+      Serial.println("Falha ao publicar");
+    }
+  } else {
+    Serial.println("Não conectado ao broker, não foi possível publicar");
+  }
+  delay(10000);
 }

@@ -2,17 +2,19 @@ const mqtt = require("mqtt");
 
 // Configurações do servidor MQTT Broker
 const brokerUrl = "mqtt://test.mosquitto.org"; // Substitua "localhost" pelo endereço do seu servidor MQTT Broker
-const topic = "sensor/niveldeagua"; // Tópico para enviar os dados
+const topic = "monitora-rs/dispositivo/1"; // Tópico para enviar os dados
 const qos = 0; // Nível de QoS (0: At most once, 1: At least once, 2: Exactly once)
 const retain = false; // Retain flag
 
-// Dados simulados do sensor
+//////////////////////////////
+
+
+// Dados simulados do dispositivo
 const dados = {
-  mensagem: "",
-  nivel_de_agua: 0, // Nível de água
-  temperatura: 0, // Temperatura
-  diferenca: 0, // Diferença de nível de água
-  nivel_alarmante: 3, // Nível de água alarmante
+  mensagem: "Situação alarmante.", // Situação preocupante // Situação comum
+  nivel_de_agua: "32", // acima do solo
+  temperatura: "12", // Temperatura
+  nivel_alarmante: 3, // Escala. 1 = sussa. 2 = medio. 3= alarmante
 };
 
 // Função para publicar dados MQTT

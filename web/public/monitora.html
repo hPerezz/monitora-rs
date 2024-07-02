@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Monitora RS</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/bootstrap/css/bootstrap.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css" />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/css-hamburgers/hamburgers.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/select2/select2.min.css"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+
+    <!--===============================================================================================-->
+    <script>
+      const script = document.createElement("script");
+      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyD-Cq1lZlOXctNLrsnHh791IYRF9qJjzCA&callback=console.debug&libraries=maps,marker&v=beta`;
+      script.async = true;
+      document.head.appendChild(script);
+    </script>
+    <style>
+      .back-to-index {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        font-size: 24px;
+        color: #000;
+        text-decoration: none;
+        z-index: 9999;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="limiter">
+      <div class="container-select-shelter100">
+        <div class="wrap-view-shelter100">
+          <span class="select-shelter100-form-title" id="nomeAbrigo">
+            {Nome do Abrigo}
+          </span>
+
+          <div id="dadosList">
+            Recebendo informações...
+            <!-- Os dados serão atualizados aqui -->
+          </div>
+
+          <div style="align-items: end">
+            <gmp-map id="map" zoom="14" map-id="DEMO_MAP_ID">
+              <gmp-advanced-marker
+                id="marker"
+                title="My location"
+              ></gmp-advanced-marker>
+            </gmp-map>
+          </div>
+
+          <script></script>
+
+          <script src="/socket.io/socket.io.js"></script>
+          <script></script>
+        </div>
+      </div>
+    </div>
+
+    <a href="index.html" class="back-to-index">&larr; Voltar</a>
+
+    <!--===============================================================================================-->
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/tilt/tilt.jquery.min.js"></script>
+    <script>
+      $(".js-tilt").tilt({
+        scale: 1.1,
+      });
+    </script>
+    <!--===============================================================================================-->
+    <script src="js/main.js"></script>
+  </body>
+</html>
